@@ -8,166 +8,192 @@
 (use Vector3)
 
 (doc Color4 "A 4-component Float color structure for GUI elements.")
-(deftype Color4 [
-  r Float
-  g Float
-  b Float
-  a Float
-])
+(deftype Color4 [r Float
+                 g Float
+                 b Float
+                 a Float])
 
 (doc Theme "Custom styling theme containing all UI colors.")
-(deftype Theme [
-  panel-bg Color4
-  panel-header Color4
-  title-text Color4
-  label-text Color4
-  
-  button-bg Color4
-  button-hover Color4
-  button-active Color4
-  button-text Color4
-  
-  slider-track Color4
-  slider-knob Color4
-  slider-knob-hover Color4
-  slider-knob-active Color4
-  
-  tab-bg Color4
-  tab-hover Color4
-  tab-active Color4
-  tab-selected Color4
-  tab-text Color4
-  tab-text-selected Color4
-  
-  header-bg Color4
-  header-hover Color4
-  header-text Color4
-  
-  child-bg Color4
-  scroll-track Color4
-  scroll-knob Color4
-  scroll-knob-hover Color4
-  scroll-knob-active Color4
-  
-  separator Color4
-  tooltip-bg Color4
-  tooltip-text Color4
-])
+(deftype Theme
+  [panel-bg Color4
+   panel-header Color4
+   title-text Color4
+   label-text Color4
+   button-bg Color4
+   button-hover Color4
+   button-active Color4
+   button-text Color4
+   slider-track Color4
+   slider-knob Color4
+   slider-knob-hover Color4
+   slider-knob-active Color4
+   tab-bg Color4
+   tab-hover Color4
+   tab-active Color4
+   tab-selected Color4
+   tab-text Color4
+   tab-text-selected Color4
+   header-bg Color4
+   header-hover Color4
+   header-text Color4
+   child-bg Color4
+   scroll-track Color4
+   scroll-knob Color4
+   scroll-knob-hover Color4
+   scroll-knob-active Color4
+   separator Color4
+   tooltip-bg Color4
+   tooltip-text Color4])
 
 (defmodule Theme
   (defn create-default []
-    (Theme.init
-      (Color4.init 0.3f 0.3f 0.35f 1.0f)       ;; panel-bg
-      (Color4.init 0.45f 0.45f 0.5f 1.0f)      ;; panel-header
-      (Color4.init 1.0f 1.0f 1.0f 1.0f)        ;; title-text
-      (Color4.init 1.0f 1.0f 1.0f 1.0f)        ;; label-text
-      
-      (Color4.init 0.4f 0.4f 0.45f 1.0f)       ;; button-bg
-      (Color4.init 0.5f 0.5f 0.6f 1.0f)        ;; button-hover
-      (Color4.init 0.6f 0.6f 0.7f 1.0f)        ;; button-active
-      (Color4.init 1.0f 1.0f 1.0f 1.0f)        ;; button-text
-      
-      (Color4.init 0.2f 0.2f 0.25f 1.0f)       ;; slider-track
-      (Color4.init 0.6f 0.6f 0.8f 1.0f)        ;; slider-knob
-      (Color4.init 0.7f 0.7f 0.95f 1.0f)       ;; slider-knob-hover
-      (Color4.init 0.8f 0.8f 1.0f 1.0f)        ;; slider-knob-active
-      
-      (Color4.init 0.25f 0.25f 0.3f 1.0f)      ;; tab-bg
-      (Color4.init 0.4f 0.4f 0.45f 1.0f)       ;; tab-hover
-      (Color4.init 0.45f 0.45f 0.5f 1.0f)      ;; tab-active
-      (Color4.init 0.5f 0.5f 0.65f 1.0f)       ;; tab-selected
-      (Color4.init 0.8f 0.8f 0.8f 1.0f)        ;; tab-text
-      (Color4.init 1.0f 1.0f 1.0f 1.0f)        ;; tab-text-selected
-      
-      (Color4.init 0.25f 0.25f 0.3f 1.0f)      ;; header-bg
-      (Color4.init 0.35f 0.35f 0.4f 1.0f)      ;; header-hover
-      (Color4.init 0.9f 0.9f 0.95f 1.0f)       ;; header-text
-      
-      (Color4.init 0.2f 0.2f 0.22f 1.0f)       ;; child-bg
-      (Color4.init 0.12f 0.12f 0.14f 1.0f)     ;; scroll-track
-      (Color4.init 0.35f 0.35f 0.38f 1.0f)     ;; scroll-knob
-      (Color4.init 0.45f 0.45f 0.5f 1.0f)      ;; scroll-knob-hover
-      (Color4.init 0.55f 0.55f 0.6f 1.0f)      ;; scroll-knob-active
-      
-      (Color4.init 0.2f 0.2f 0.23f 1.0f)       ;; separator
-      (Color4.init 0.1f 0.1f 0.12f 0.95f)      ;; tooltip-bg
-      (Color4.init 0.9f 0.9f 0.9f 1.0f)        ;; tooltip-text
-    ))
-)
+    (Theme.init (Color4.init 0.3f 0.3f 0.35f 1f)
+                ;; panel-bg
+                (Color4.init 0.45f 0.45f 0.5f 1f)
+                ;; panel-header
+                (Color4.init 1f 1f 1f 1f)
+                ;; title-text
+                (Color4.init 1f 1f 1f 1f)
+                ;; label-text
+
+                (Color4.init 0.4f 0.4f 0.45f 1f)
+                ;; button-bg
+                (Color4.init 0.5f 0.5f 0.6f 1f)
+                ;; button-hover
+                (Color4.init 0.6f 0.6f 0.7f 1f)
+                ;; button-active
+                (Color4.init 1f 1f 1f 1f)
+                ;; button-text
+
+                (Color4.init 0.2f 0.2f 0.25f 1f)
+                ;; slider-track
+                (Color4.init 0.6f 0.6f 0.8f 1f)
+                ;; slider-knob
+                (Color4.init 0.7f 0.7f 0.95f 1f)
+                ;; slider-knob-hover
+                (Color4.init 0.8f 0.8f 1f 1f)
+                ;; slider-knob-active
+
+                (Color4.init 0.25f 0.25f 0.3f 1f)
+                ;; tab-bg
+                (Color4.init 0.4f 0.4f 0.45f 1f)
+                ;; tab-hover
+                (Color4.init 0.45f 0.45f 0.5f 1f)
+                ;; tab-active
+                (Color4.init 0.5f 0.5f 0.65f 1f)
+                ;; tab-selected
+                (Color4.init 0.8f 0.8f 0.8f 1f)
+                ;; tab-text
+                (Color4.init 1f 1f 1f 1f)
+                ;; tab-text-selected
+
+                (Color4.init 0.25f 0.25f 0.3f 1f)
+                ;; header-bg
+                (Color4.init 0.35f 0.35f 0.4f 1f)
+                ;; header-hover
+                (Color4.init 0.9f 0.9f 0.95f 1f)
+                ;; header-text
+
+                (Color4.init 0.2f 0.2f 0.22f 1f)
+                ;; child-bg
+                (Color4.init 0.12f 0.12f 0.14f 1f)
+                ;; scroll-track
+                (Color4.init 0.35f 0.35f 0.38f 1f)
+                ;; scroll-knob
+                (Color4.init 0.45f 0.45f 0.5f 1f)
+                ;; scroll-knob-hover
+                (Color4.init 0.55f 0.55f 0.6f 1f)
+                ;; scroll-knob-active
+
+                (Color4.init 0.2f 0.2f 0.23f 1f)
+                ;; separator
+                (Color4.init 0.1f 0.1f 0.12f 0.95f)
+                ;; tooltip-bg
+                (Color4.init 0.9f 0.9f 0.9f 1f)
+                ;; tooltip-text
+    )))
 
 (doc Vertex "Matches the vertex input layout of gui.wgsl.")
-(deftype Vertex [
-  x Float
-  y Float
-  u Float
-  v Float
-  r Float
-  g Float
-  b Float
-  a Float
-  mode Float
-  rect-w Float
-  rect-h Float
-  radius Float
-])
+(deftype Vertex
+  [x Float
+   y Float
+   u Float
+   v Float
+   r Float
+   g Float
+   b Float
+   a Float
+   mode Float
+   rect-w Float
+   rect-h Float
+   radius Float])
 
 (doc GuiRect "Defines a 2D bounding box.")
-(deftype GuiRect [
-  x Float
-  y Float
-  w Float
-  h Float
-])
+(deftype GuiRect [x Float
+                  y Float
+                  w Float
+                  h Float])
 
 (defmodule GuiRect
   (defn contains? [r px py]
-    (and (and (>= px @(GuiRect.x r)) (<= px (+ @(GuiRect.x r) @(GuiRect.w r))))
-         (and (>= py @(GuiRect.y r)) (<= py (+ @(GuiRect.y r) @(GuiRect.h r))))))
-)
+    (and
+      (and (>= px @(GuiRect.x r)) (<= px (+ @(GuiRect.x r) @(GuiRect.w r))))
+      (and (>= py @(GuiRect.y r)) (<= py (+ @(GuiRect.y r) @(GuiRect.h r)))))))
 
 (doc GuiDrawCommand "Batched shapes to be rendered with clipping bounds.")
 (deftype GuiDrawCommand
-  (Rect [GuiRect Color4 Float GuiRect]) ;; rect, color (rgba), corner_radius, clip_rect
-  (Text [GuiRect Color4 String GuiRect]) ;; rect, color, content_string, clip_rect
+  (Rect [GuiRect Color4 Float GuiRect])
+  ;; rect, color (rgba), corner_radius, clip_rect
+  (Text [GuiRect Color4 String GuiRect])
+  ;; rect, color, content_string, clip_rect
 )
 
 (doc PanelState "Internal layout state for an active panel.")
-(deftype PanelState [
-  bounds GuiRect
-  layout-x Float
-  layout-y Float
-  layout-w Float
-  item-padding Float
-  row-height Float
-  scroll-y Float
-  id String
-])
+(deftype PanelState
+  [bounds GuiRect
+   layout-x Float
+   layout-y Float
+   layout-w Float
+   item-padding Float
+   row-height Float
+   scroll-y Float
+   id String])
 
 (doc Context "The immediate-mode UI state and batch renderer data.")
-(deftype Context [
-  mouse-x Float
-  mouse-y Float
-  mouse-down Bool
-  mouse-clicked Bool
-  
-  active-id String
-  hot-id String
-  
-  draw-commands (Array GuiDrawCommand)
-  active-panel (Maybe PanelState)
-  
-  id-stack (Array String)
-  input-captured Bool
-  clip-rects (Array GuiRect)
-  panel-stack (Array PanelState)
-  theme Theme
-  last-widget-hovered Bool
-  active-combo-id String
-])
+(deftype Context
+  [mouse-x Float
+   mouse-y Float
+   mouse-down Bool
+   mouse-clicked Bool
+   active-id String
+   hot-id String
+   draw-commands (Array GuiDrawCommand)
+   active-panel (Maybe PanelState)
+   id-stack (Array String)
+   input-captured Bool
+   clip-rects (Array GuiRect)
+   panel-stack (Array PanelState)
+   theme Theme
+   last-widget-hovered Bool
+   active-combo-id String])
 
 (defmodule Context
   (defn create []
-    (Context.init 0.0f 0.0f false false @"" @"" [] (Maybe.Nothing) [] false [] [] (Theme.create-default) false @""))
+    (Context.init 0f
+                  0f
+                  false
+                  false
+                  @""
+                  @""
+                  []
+                  (Maybe.Nothing)
+                  []
+                  false
+                  []
+                  []
+                  (Theme.create-default)
+                  false
+                  @""))
 
   (defn clear! [ctx]
     (do
@@ -177,8 +203,7 @@
       (Context.set-input-captured! ctx false)
       (Context.set-clip-rects! ctx [])
       (Context.set-panel-stack! ctx [])
-      (Context.set-last-widget-hovered! ctx false)))
-)
+      (Context.set-last-widget-hovered! ctx false))))
 
 (defmodule Gui
   (use Double)
@@ -191,28 +216,31 @@
   (sig end-panel (Fn [(Ref Context)] ()))
   (sig label (Fn [(Ref Context) String] ()))
   (sig button (Fn [(Ref Context) (Ref String) String] Bool))
-  (sig slider (Fn [(Ref Context) (Ref String) Float Float Float String] (Maybe Float)))
+  (sig slider
+       (Fn [(Ref Context) (Ref String) Float Float Float String] (Maybe Float)))
   (sig generate-vertices (Fn [(Ref Context)] (Array Vertex)))
   (sig generate-vertices-flat (Fn [(Ref Context)] (Array Float)))
-  (sig tabs (Fn [(Ref Context) (Ref String) (Ref (Array String)) Int] (Maybe Int)))
+  (sig tabs
+       (Fn [(Ref Context) (Ref String) (Ref (Array String)) Int] (Maybe Int)))
   (sig collapsing-header (Fn [(Ref Context) (Ref String) String Bool] Bool))
   (sig begin-child-panel (Fn [(Ref Context) (Ref String) Float Float Float] ()))
   (sig end-child-panel (Fn [(Ref Context)] (Maybe Float)))
   (sig separator (Fn [(Ref Context)] ()))
   (sig tooltip (Fn [(Ref Context) (Ref String)] ()))
   (sig widget-hovered? (Fn [(Ref Context) (Ref GuiRect)] Bool))
-  (sig combo (Fn [(Ref Context) (Ref String) (Ref (Array String)) Int] (Maybe Int)))
-  
+  (sig combo
+       (Fn [(Ref Context) (Ref String) (Ref (Array String)) Int] (Maybe Int)))
+
   (sig push-id (Fn [(Ref Context) (Ref String)] ()))
   (sig pop-id (Fn [(Ref Context)] ()))
   (sig get-hashed-id (Fn [(Ref Context) (Ref String)] String))
   (sig input-captured? (Fn [(Ref Context)] Bool))
-  
+
   (sig intersect-rects (Fn [(Ref GuiRect) (Ref GuiRect)] GuiRect))
   (sig get-active-clip-rect (Fn [(Ref Context)] GuiRect))
   (sig push-clip-rect (Fn [(Ref Context) (Ref GuiRect)] ()))
   (sig pop-clip-rect (Fn [(Ref Context)] ()))
-  
+
   (sig text-width (Fn [(Ref String) Float] Float))
 
   ;; === TEXT METRICS ===
@@ -223,15 +251,13 @@
       (* (Float.from-int len) char-w)))
 
   ;; === INPUT CAPTURE ===
-  (defn input-captured? [ctx]
-    @(Context.input-captured ctx))
+  (defn input-captured? [ctx] @(Context.input-captured ctx))
 
   (defn widget-hovered? [ctx rect]
     (let [mx @(Context.mouse-x ctx)
           my @(Context.mouse-y ctx)
           clip (get-active-clip-rect ctx)]
-      (and (GuiRect.contains? rect mx my)
-           (GuiRect.contains? &clip mx my))))
+      (and (GuiRect.contains? rect mx my) (GuiRect.contains? &clip mx my))))
 
   ;; === ID HASH STACK ===
   (defn push-id [ctx id]
@@ -263,26 +289,23 @@
           y1 @(GuiRect.y r1)
           w1 @(GuiRect.w r1)
           h1 @(GuiRect.h r1)
-          
           x2 @(GuiRect.x r2)
           y2 @(GuiRect.y r2)
           w2 @(GuiRect.w r2)
           h2 @(GuiRect.h r2)
-          
           ix (max x1 x2)
           iy (max y1 y2)
           iw (min (+ x1 w1) (+ x2 w2))
           ih (min (+ y1 h1) (+ y2 h2))
-          
-          final-w (max 0.0f (- iw ix))
-          final-h (max 0.0f (- ih iy))]
+          final-w (max 0f (- iw ix))
+          final-h (max 0f (- ih iy))]
       (GuiRect.init ix iy final-w final-h)))
 
   (defn get-active-clip-rect [ctx]
     (let [stack @(Context.clip-rects ctx)
           num (Array.length &stack)]
       (if (= num 0)
-        (GuiRect.init 0.0f 0.0f 99999.0f 99999.0f)
+        (GuiRect.init 0f 0f 99999f 99999f)
         @(Array.unsafe-nth &stack (dec num)))))
 
   (defn push-clip-rect [ctx rect]
@@ -311,7 +334,7 @@
 
   (defn get-next-widget-rect! [ctx height]
     (match @(Context.active-panel ctx)
-      (Maybe.Nothing) (GuiRect.init 0.0f 0.0f 0.0f 0.0f)
+      (Maybe.Nothing) (GuiRect.init 0f 0f 0f 0f)
       (Maybe.Just state)
         (let [bounds @(PanelState.bounds &state)
               px @(GuiRect.x &bounds)
@@ -322,148 +345,179 @@
               padding @(PanelState.item-padding &state)
               sc-y @(PanelState.scroll-y &state)
               p-id @(PanelState.id &state)
-              
               ;; Move next cursor down
               new-y (+ (+ ly height) padding)
-              new-state (PanelState.init 
-                          bounds 
-                          lx 
-                          new-y 
-                          w 
-                          padding 
-                          @(PanelState.row-height &state)
-                          sc-y
-                          p-id)]
+              new-state (PanelState.init bounds
+                                         lx
+                                         new-y
+                                         w
+                                         padding
+                                         @(PanelState.row-height &state)
+                                         sc-y
+                                         p-id)]
           (do
             (Context.set-active-panel! ctx (Maybe.Just new-state))
             (GuiRect.init (+ px lx) (- (+ py ly) sc-y) w height)))))
 
   (defn begin-panel [ctx id x y w h title]
     (let [bounds (GuiRect.init x y w h)
-          pad 8.0f
-          pstate (PanelState.init @&bounds pad 32.0f (- w (* pad 2.0f)) pad 24.0f 0.0f id)
+          pad 8f
+          pstate (PanelState.init @&bounds
+                                  pad
+                                  32f
+                                  (- w (* pad 2f))
+                                  pad
+                                  24f
+                                  0f
+                                  id)
           bg-color @(Theme.panel-bg (Context.theme ctx))
           header-color @(Theme.panel-header (Context.theme ctx))
-          header-rect (GuiRect.init x y w 26.0f)
+          header-rect (GuiRect.init x y w 26f)
           mx @(Context.mouse-x ctx)
           my @(Context.mouse-y ctx)]
       (do
         (Context.set-active-panel! ctx (Maybe.Just pstate))
-        
+
         ;; Input Capture: check if mouse is inside panel
         (when (GuiRect.contains? &bounds mx my)
           (Context.set-input-captured! ctx true))
-          
+
         ;; Push the clip rect stack for this panel
         (push-clip-rect ctx &bounds)
-        
+
         ;; Push background rectangle (corner radius 6 pixels)
-        (Array.push-back! (Context.draw-commands ctx) (GuiDrawCommand.Rect @&bounds bg-color 6.0f (get-active-clip-rect ctx)))
+        (Array.push-back! (Context.draw-commands ctx)
+                          (GuiDrawCommand.Rect @&bounds
+                                               bg-color
+                                               6f
+                                               (get-active-clip-rect ctx)))
         ;; Push header bar rectangle
-        (Array.push-back! (Context.draw-commands ctx) (GuiDrawCommand.Rect header-rect header-color 6.0f (get-active-clip-rect ctx)))
+        (Array.push-back! (Context.draw-commands ctx)
+                          (GuiDrawCommand.Rect header-rect
+                                               header-color
+                                               6f
+                                               (get-active-clip-rect ctx)))
         ;; Push header title text
-        (let [title-rect (GuiRect.init (+ x pad) (+ y 4.0f) (- w (* pad 2.0f)) 20.0f)
+        (let [title-rect (GuiRect.init (+ x pad) (+ y 4f) (- w (* pad 2f)) 20f)
               text-color @(Theme.title-text (Context.theme ctx))]
-          (Array.push-back! (Context.draw-commands ctx) (GuiDrawCommand.Text title-rect text-color title (get-active-clip-rect ctx))))
-        )))
+          (Array.push-back! (Context.draw-commands ctx)
+                            (GuiDrawCommand.Text title-rect
+                                                 text-color
+                                                 title
+                                                 (get-active-clip-rect ctx)))))))
 
   (defn end-panel [ctx]
-    (do
-      (Context.set-active-panel! ctx (Maybe.Nothing))
-      (pop-clip-rect ctx)))
+    (do (Context.set-active-panel! ctx (Maybe.Nothing)) (pop-clip-rect ctx)))
 
   (defn label [ctx text]
-    (let [rect (get-next-widget-rect! ctx 18.0f)
+    (let [rect (get-next-widget-rect! ctx 18f)
           hovered (widget-hovered? ctx &rect)
           color @(Theme.label-text (Context.theme ctx))]
       (do
         (Context.set-last-widget-hovered! ctx hovered)
-        (Array.push-back! (Context.draw-commands ctx) (GuiDrawCommand.Text rect color text (get-active-clip-rect ctx))))))
+        (Array.push-back! (Context.draw-commands ctx)
+                          (GuiDrawCommand.Text rect
+                                               color
+                                               text
+                                               (get-active-clip-rect ctx))))))
 
   (defn button [ctx id label-text]
-    (let [rect (get-next-widget-rect! ctx 24.0f)
+    (let [rect (get-next-widget-rect! ctx 24f)
           hashed-id (get-hashed-id ctx id)
           hovered (widget-hovered? ctx &rect)
           clicked (and hovered @(Context.mouse-clicked ctx))
-          
           ;; Style based on mouse hover/click state
           bg-color (if hovered
-                     (if @(Context.mouse-down ctx)
-                       @(Theme.button-active (Context.theme ctx))
-                       @(Theme.button-hover (Context.theme ctx)))
-                     @(Theme.button-bg (Context.theme ctx)))
+            (if @(Context.mouse-down ctx)
+              @(Theme.button-active (Context.theme ctx))
+              @(Theme.button-hover (Context.theme ctx)))
+            @(Theme.button-bg (Context.theme ctx)))
           text-color @(Theme.button-text (Context.theme ctx))]
       (do
         (Context.set-last-widget-hovered! ctx hovered)
-        (when hovered
-          (Context.set-hot-id! ctx @id))
-        (when clicked
-          (Context.set-active-id! ctx @id))
-          
+        (when hovered (Context.set-hot-id! ctx @id))
+        (when clicked (Context.set-active-id! ctx @id))
+
         ;; 1. Draw Button Rectangle (corner radius 4)
-        (Array.push-back! (Context.draw-commands ctx) (GuiDrawCommand.Rect @&rect bg-color 4.0f (get-active-clip-rect ctx)))
+        (Array.push-back! (Context.draw-commands ctx)
+                          (GuiDrawCommand.Rect @&rect
+                                               bg-color
+                                               4f
+                                               (get-active-clip-rect ctx)))
         ;; 2. Draw Label Text inside button
-        (let [pad 6.0f
-              text-w (text-width &label-text 14.0f)
-              text-x (+ @(GuiRect.x &rect) (/ (- @(GuiRect.w &rect) text-w) 2.0f))
-              text-y (+ @(GuiRect.y &rect) 4.0f)
-              text-rect (GuiRect.init text-x text-y text-w 16.0f)]
-          (Array.push-back! (Context.draw-commands ctx) (GuiDrawCommand.Text text-rect text-color label-text (get-active-clip-rect ctx))))
-          
+        (let [pad 6f
+              text-w (text-width &label-text 14f)
+              text-x (+ @(GuiRect.x &rect) (/ (- @(GuiRect.w &rect) text-w) 2f))
+              text-y (+ @(GuiRect.y &rect) 4f)
+              text-rect (GuiRect.init text-x text-y text-w 16f)]
+          (Array.push-back! (Context.draw-commands ctx)
+                            (GuiDrawCommand.Text text-rect
+                                                 text-color
+                                                 label-text
+                                                 (get-active-clip-rect ctx))))
+
         clicked)))
 
   (defn slider [ctx id val min-val max-val label-text]
-    (let [rect (get-next-widget-rect! ctx 20.0f)
+    (let [rect (get-next-widget-rect! ctx 20f)
           hashed-id (get-hashed-id ctx id)
-          
           x @(GuiRect.x &rect)
           y @(GuiRect.y &rect)
           w @(GuiRect.w &rect)
           h @(GuiRect.h &rect)
-          
           ;; Layout split: 35% label text, 65% slider track
           label-w (* w 0.35f)
           track-x (+ x label-w)
           track-w (- w label-w)
-          track-h 6.0f
-          track-y (+ y (/ (- h track-h) 2.0f))
+          track-h 6f
+          track-y (+ y (/ (- h track-h) 2f))
           track-rect (GuiRect.init track-x track-y track-w track-h)
-          
-          knob-size 14.0f
+          knob-size 14f
           knob-radius (* knob-size 0.5f)
-          
           mx @(Context.mouse-x ctx)
           my @(Context.mouse-y ctx)
-          
           ;; Hover checks full widget bounds
           hovered (widget-hovered? ctx &rect)
           act-id @(Context.active-id ctx)
           result (Maybe.Nothing)]
       (do
         (Context.set-last-widget-hovered! ctx hovered)
-        (when hovered
-          (Context.set-hot-id! ctx @id))
+        (when hovered (Context.set-hot-id! ctx @id))
         (when (and hovered @(Context.mouse-clicked ctx))
           (Context.set-active-id! ctx @id))
-          
+
         ;; Dragging logic
         (when (= &act-id id)
           (if @(Context.mouse-down ctx)
-            (let [pct (Double.clamp 0.0 1.0 (Double.from-float (/ (- mx track-x) track-w)))
-                  new-val (+ min-val (* (Double.to-float pct) (- max-val min-val)))]
+            (let [pct (Double.clamp 0.0
+                                    1.0
+                                    (Double.from-float (/ (- mx track-x) track-w)))
+                  new-val (+ min-val
+                             (* (Double.to-float pct) (- max-val min-val)))]
               (set! result (Maybe.Just new-val)))
             (Context.set-active-id! ctx @"")))
-            
+
         ;; Render elements
         ;; 1. Draw Label Text
-        (let [text-rect (GuiRect.init @(GuiRect.x &rect) @(GuiRect.y &rect) label-w 18.0f)
+        (let [text-rect (GuiRect.init @(GuiRect.x &rect)
+                                      @(GuiRect.y &rect)
+                                      label-w
+                                      18f)
               text-color @(Theme.label-text (Context.theme ctx))]
-          (Array.push-back! (Context.draw-commands ctx) (GuiDrawCommand.Text text-rect text-color label-text (get-active-clip-rect ctx))))
-          
+          (Array.push-back! (Context.draw-commands ctx)
+                            (GuiDrawCommand.Text text-rect
+                                                 text-color
+                                                 label-text
+                                                 (get-active-clip-rect ctx))))
+
         ;; 2. Draw Track Bar
         (let [track-color @(Theme.slider-track (Context.theme ctx))]
-          (Array.push-back! (Context.draw-commands ctx) (GuiDrawCommand.Rect track-rect track-color 2.0f (get-active-clip-rect ctx))))
-          
+          (Array.push-back! (Context.draw-commands ctx)
+                            (GuiDrawCommand.Rect track-rect
+                                                 track-color
+                                                 2f
+                                                 (get-active-clip-rect ctx))))
+
         ;; 3. Draw Knob
         (let [current-val (match-ref &result (Maybe.Just v) @v _ val)
               val-pct (/ (- current-val min-val) (- max-val min-val))
@@ -471,12 +525,16 @@
               knob-y (- (+ track-y (* track-h 0.5f)) knob-radius)
               knob-rect (GuiRect.init knob-x knob-y knob-size knob-size)
               knob-color (if (= &act-id id)
-                           @(Theme.slider-knob-active (Context.theme ctx))
-                           (if hovered
-                             @(Theme.slider-knob-hover (Context.theme ctx))
-                             @(Theme.slider-knob (Context.theme ctx))))]
-          (Array.push-back! (Context.draw-commands ctx) (GuiDrawCommand.Rect knob-rect knob-color (* knob-size 0.5f) (get-active-clip-rect ctx))))
-          
+                @(Theme.slider-knob-active (Context.theme ctx))
+                (if hovered
+                  @(Theme.slider-knob-hover (Context.theme ctx))
+                  @(Theme.slider-knob (Context.theme ctx))))]
+          (Array.push-back! (Context.draw-commands ctx)
+                            (GuiDrawCommand.Rect knob-rect
+                                                 knob-color
+                                                 (* knob-size 0.5f)
+                                                 (get-active-clip-rect ctx))))
+
         result)))
 
   ;; === RENDER GEOMETRY GENERATION ===
@@ -493,31 +551,68 @@
                     ry @(GuiRect.y rect)
                     rw @(GuiRect.w rect)
                     rh @(GuiRect.h rect)
-                    
                     intersected (intersect-rects rect c-rect)
                     ix @(GuiRect.x &intersected)
                     iy @(GuiRect.y &intersected)
                     iw @(GuiRect.w &intersected)
                     ih @(GuiRect.h &intersected)]
-                (when (and (> iw 0.0f) (> ih 0.0f))
+                (when (and (> iw 0f) (> ih 0f))
                   (let [r @(Color4.r color)
                         g @(Color4.g color)
                         b @(Color4.b color)
                         a @(Color4.a color)
-                        
-                        packed-u (+ (* @radius 10000.0f) rw)
+                        packed-u (+ (* @radius 10000f) rw)
                         packed-v rh
-                        
-                        v0 (Vertex.init ix iy packed-u packed-v r g b a 0.0f rw rh @radius)
-                        
-                        v1 (Vertex.init ix (+ iy ih) packed-u packed-v r g b a 0.0f rw rh @radius)
-                        
-                        v2 (Vertex.init (+ ix iw) iy packed-u packed-v r g b a 0.0f rw rh @radius)
-                        
+                        v0 (Vertex.init ix
+                                        iy
+                                        packed-u
+                                        packed-v
+                                        r
+                                        g
+                                        b
+                                        a
+                                        0f
+                                        rw
+                                        rh
+                                        @radius)
+                        v1 (Vertex.init ix
+                                        (+ iy ih)
+                                        packed-u
+                                        packed-v
+                                        r
+                                        g
+                                        b
+                                        a
+                                        0f
+                                        rw
+                                        rh
+                                        @radius)
+                        v2 (Vertex.init (+ ix iw)
+                                        iy
+                                        packed-u
+                                        packed-v
+                                        r
+                                        g
+                                        b
+                                        a
+                                        0f
+                                        rw
+                                        rh
+                                        @radius)
                         v3 @&v2
                         v4 @&v1
-                        
-                        v5 (Vertex.init (+ ix iw) (+ iy ih) packed-u packed-v r g b a 0.0f rw rh @radius)]
+                        v5 (Vertex.init (+ ix iw)
+                                        (+ iy ih)
+                                        packed-u
+                                        packed-v
+                                        r
+                                        g
+                                        b
+                                        a
+                                        0f
+                                        rw
+                                        rh
+                                        @radius)]
                     (do
                       (Array.push-back! &verts v0)
                       (Array.push-back! &verts v1)
@@ -525,7 +620,7 @@
                       (Array.push-back! &verts v3)
                       (Array.push-back! &verts v4)
                       (Array.push-back! &verts v5)))))
-              
+
             (GuiDrawCommand.Text rect color str-val c-rect)
               (let [rx @(GuiRect.x rect)
                     ry @(GuiRect.y rect)
@@ -545,7 +640,7 @@
                         iy @(GuiRect.y &intersected)
                         iw @(GuiRect.w &intersected)
                         ih @(GuiRect.h &intersected)]
-                    (when (and (> iw 0.0f) (> ih 0.0f))
+                    (when (and (> iw 0f) (> ih 0f))
                       (let [ch (String.char-at str-val ch-idx)
                             char-code (Char.to-int ch)
                             col (Int.mod char-code 16)
@@ -554,25 +649,70 @@
                             cell-h 0.0625f
                             u-min (* (Float.from-int col) cell-w)
                             v-min (* (Float.from-int row) cell-h)
-                            
                             uv0-u (+ u-min (* (/ (- ix char-x) char-w) cell-w))
-                            uv0-v (+ 10000.0f (+ v-min (* (/ (- iy ry) rh) cell-h)))
-                            v0 (Vertex.init ix iy uv0-u uv0-v r g b a 1.0f char-w rh 0.0f)
-                            
+                            uv0-v (+ 10000f
+                                     (+ v-min (* (/ (- iy ry) rh) cell-h)))
+                            v0 (Vertex.init ix
+                                            iy
+                                            uv0-u
+                                            uv0-v
+                                            r
+                                            g
+                                            b
+                                            a
+                                            1f
+                                            char-w
+                                            rh
+                                            0f)
                             uv1-u (+ u-min (* (/ (- ix char-x) char-w) cell-w))
-                            uv1-v (+ 10000.0f (+ v-min (* (/ (- (+ iy ih) ry) rh) cell-h)))
-                            v1 (Vertex.init ix (+ iy ih) uv1-u uv1-v r g b a 1.0f char-w rh 0.0f)
-                            
-                            uv2-u (+ u-min (* (/ (- (+ ix iw) char-x) char-w) cell-w))
-                            uv2-v (+ 10000.0f (+ v-min (* (/ (- iy ry) rh) cell-h)))
-                            v2 (Vertex.init (+ ix iw) iy uv2-u uv2-v r g b a 1.0f char-w rh 0.0f)
-                            
+                            uv1-v (+ 10000f
+                                     (+ v-min (* (/ (- (+ iy ih) ry) rh) cell-h)))
+                            v1 (Vertex.init ix
+                                            (+ iy ih)
+                                            uv1-u
+                                            uv1-v
+                                            r
+                                            g
+                                            b
+                                            a
+                                            1f
+                                            char-w
+                                            rh
+                                            0f)
+                            uv2-u (+ u-min
+                                     (* (/ (- (+ ix iw) char-x) char-w) cell-w))
+                            uv2-v (+ 10000f
+                                     (+ v-min (* (/ (- iy ry) rh) cell-h)))
+                            v2 (Vertex.init (+ ix iw)
+                                            iy
+                                            uv2-u
+                                            uv2-v
+                                            r
+                                            g
+                                            b
+                                            a
+                                            1f
+                                            char-w
+                                            rh
+                                            0f)
                             v3 @&v2
                             v4 @&v1
-                            
-                            uv5-u (+ u-min (* (/ (- (+ ix iw) char-x) char-w) cell-w))
-                            uv5-v (+ 10000.0f (+ v-min (* (/ (- (+ iy ih) ry) rh) cell-h)))
-                            v5 (Vertex.init (+ ix iw) (+ iy ih) uv5-u uv5-v r g b a 1.0f char-w rh 0.0f)]
+                            uv5-u (+ u-min
+                                     (* (/ (- (+ ix iw) char-x) char-w) cell-w))
+                            uv5-v (+ 10000f
+                                     (+ v-min (* (/ (- (+ iy ih) ry) rh) cell-h)))
+                            v5 (Vertex.init (+ ix iw)
+                                            (+ iy ih)
+                                            uv5-u
+                                            uv5-v
+                                            r
+                                            g
+                                            b
+                                            a
+                                            1f
+                                            char-w
+                                            rh
+                                            0f)]
                         (do
                           (Array.push-back! &verts v0)
                           (Array.push-back! &verts v1)
@@ -605,21 +745,21 @@
         flat)))
 
   (defn tabs [ctx id tab-labels current-selection]
-    (let [rect (get-next-widget-rect! ctx 24.0f)
+    (let [rect (get-next-widget-rect! ctx 24f)
           hashed-id (get-hashed-id ctx id)
-          
           x @(GuiRect.x &rect)
           y @(GuiRect.y &rect)
           w @(GuiRect.w &rect)
           h @(GuiRect.h &rect)
-          
           num (Array.length tab-labels)
           result (Maybe.Nothing)
           widget-hov (widget-hovered? ctx &rect)]
       (if (= num 0)
         result
-        (let [spacing 4.0f
-              tab-w (/ (- w (* spacing (Float.from-int (dec num)))) (Float.from-int num))
+        (let [spacing 4f
+              tab-w (/
+                (- w (* spacing (Float.from-int (dec num))))
+                (Float.from-int num))
               mx @(Context.mouse-x ctx)
               my @(Context.mouse-y ctx)]
           (do
@@ -630,87 +770,103 @@
                     hovered (widget-hovered? ctx &tab-rect)
                     clicked (and hovered @(Context.mouse-clicked ctx))
                     selected (= current-selection i)
-                    
                     ;; Style based on selection and hover
                     bg-color (if selected
-                               @(Theme.tab-selected (Context.theme ctx))
-                               (if hovered
-                                 (if @(Context.mouse-down ctx)
-                                   @(Theme.tab-active (Context.theme ctx))
-                                   @(Theme.tab-hover (Context.theme ctx)))
-                                 @(Theme.tab-bg (Context.theme ctx))))
+                      @(Theme.tab-selected (Context.theme ctx))
+                      (if hovered
+                        (if @(Context.mouse-down ctx)
+                          @(Theme.tab-active (Context.theme ctx))
+                          @(Theme.tab-hover (Context.theme ctx)))
+                        @(Theme.tab-bg (Context.theme ctx))))
                     text-color (if selected
-                                 @(Theme.tab-text-selected (Context.theme ctx))
-                                 @(Theme.tab-text (Context.theme ctx)))
+                      @(Theme.tab-text-selected (Context.theme ctx))
+                      @(Theme.tab-text (Context.theme ctx)))
                     label (Array.unsafe-nth tab-labels i)]
                 (do
-                  (when hovered
-                    (Context.set-hot-id! ctx @id))
+                  (when hovered (Context.set-hot-id! ctx @id))
                   (when clicked
                     (do
                       (Context.set-active-id! ctx @id)
                       (set! result (Maybe.Just i))))
-                  
+
                   ;; Draw Tab button (radius 4.0)
-                  (Array.push-back! (Context.draw-commands ctx) (GuiDrawCommand.Rect tab-rect bg-color 4.0f (get-active-clip-rect ctx)))
+                  (Array.push-back! (Context.draw-commands ctx)
+                                    (GuiDrawCommand.Rect tab-rect
+                                                         bg-color
+                                                         4f
+                                                         (get-active-clip-rect ctx)))
                   ;; Draw centered text
-                  (let [text-w (text-width label 12.0f)
-                        text-x (+ tab-x (/ (- tab-w text-w) 2.0f))
-                        text-y (+ y 6.0f)
-                        text-rect (GuiRect.init text-x text-y text-w 14.0f)]
-                    (Array.push-back! (Context.draw-commands ctx) (GuiDrawCommand.Text text-rect text-color @label (get-active-clip-rect ctx)))))))
+                  (let [text-w (text-width label 12f)
+                        text-x (+ tab-x (/ (- tab-w text-w) 2f))
+                        text-y (+ y 6f)
+                        text-rect (GuiRect.init text-x text-y text-w 14f)]
+                    (Array.push-back! (Context.draw-commands ctx)
+                                      (GuiDrawCommand.Text text-rect
+                                                           text-color
+                                                           @label
+                                                           (get-active-clip-rect ctx)))))))
             result)))))
 
   (defn collapsing-header [ctx id title is-open]
-    (let [rect (get-next-widget-rect! ctx 22.0f)
+    (let [rect (get-next-widget-rect! ctx 22f)
           hashed-id (get-hashed-id ctx id)
-          
           x @(GuiRect.x &rect)
           y @(GuiRect.y &rect)
           w @(GuiRect.w &rect)
           h @(GuiRect.h &rect)
-          
           hovered (widget-hovered? ctx &rect)
           clicked (and hovered @(Context.mouse-clicked ctx))
-          
           ;; If clicked, toggle the open state
           next-open (if clicked (not is-open) is-open)
-          
           ;; Style based on state
           bg-color (if hovered
-                     @(Theme.header-hover (Context.theme ctx))
-                     @(Theme.header-bg (Context.theme ctx)))
+            @(Theme.header-hover (Context.theme ctx))
+            @(Theme.header-bg (Context.theme ctx)))
           text-color @(Theme.header-text (Context.theme ctx))
-          
           ;; Prepend visual indicator arrow to title
           arrow (if next-open @"- " @"+ ")
           full-title (str* arrow title)]
       (do
         (Context.set-last-widget-hovered! ctx hovered)
-        (when hovered
-          (Context.set-hot-id! ctx @id))
-        (when clicked
-          (Context.set-active-id! ctx @id))
-          
+        (when hovered (Context.set-hot-id! ctx @id))
+        (when clicked (Context.set-active-id! ctx @id))
+
         ;; Draw background rect (radius 3.0f)
-        (Array.push-back! (Context.draw-commands ctx) (GuiDrawCommand.Rect @&rect bg-color 3.0f (get-active-clip-rect ctx)))
-        
+        (Array.push-back! (Context.draw-commands ctx)
+                          (GuiDrawCommand.Rect @&rect
+                                               bg-color
+                                               3f
+                                               (get-active-clip-rect ctx)))
+
         ;; Draw Title Text (offset from left edge)
-        (let [text-rect (GuiRect.init (+ x 6.0f) (+ y 4.0f) (- w 12.0f) 16.0f)]
-          (Array.push-back! (Context.draw-commands ctx) (GuiDrawCommand.Text text-rect text-color full-title (get-active-clip-rect ctx))))
-          
+        (let [text-rect (GuiRect.init (+ x 6f) (+ y 4f) (- w 12f) 16f)]
+          (Array.push-back! (Context.draw-commands ctx)
+                            (GuiDrawCommand.Text text-rect
+                                                 text-color
+                                                 full-title
+                                                 (get-active-clip-rect ctx))))
+
         next-open)))
 
   (defn begin-child-panel [ctx id w h scroll-y]
     (let [parent-w (match @(Context.active-panel ctx)
-                     (Maybe.Nothing) 100.0f
-                     (Maybe.Just state) @(PanelState.layout-w &state))
-          actual-w (if (<= w 0.0f) parent-w w)
+            (Maybe.Nothing) 100f
+            (Maybe.Just state) @(PanelState.layout-w &state))
+          actual-w (if (<= w 0f) parent-w w)
           rect (get-next-widget-rect! ctx h)
-          child-rect (GuiRect.init @(GuiRect.x &rect) @(GuiRect.y &rect) actual-w h)
-          
-          pad 6.0f
-          child-state (PanelState.init @&child-rect pad pad (- actual-w (* pad 2.0f)) pad 20.0f scroll-y @id)
+          child-rect (GuiRect.init @(GuiRect.x &rect)
+                                   @(GuiRect.y &rect)
+                                   actual-w
+                                   h)
+          pad 6f
+          child-state (PanelState.init @&child-rect
+                                       pad
+                                       pad
+                                       (- actual-w (* pad 2f))
+                                       pad
+                                       20f
+                                       scroll-y
+                                       @id)
           bg-color @(Theme.child-bg (Context.theme ctx))]
       (do
         ;; Push current active-panel to stack
@@ -720,22 +876,25 @@
             (let [stack @(Context.panel-stack ctx)
                   new-stack (Array.push-back stack state)]
               (Context.set-panel-stack! ctx new-stack)))
-              
+
         ;; Set active panel to child panel
         (Context.set-active-panel! ctx (Maybe.Just child-state))
-        
+
         ;; Input capture check
         (let [mx @(Context.mouse-x ctx)
               my @(Context.mouse-y ctx)]
           (when (GuiRect.contains? &child-rect mx my)
             (Context.set-input-captured! ctx true)))
-            
+
         ;; Push clip rect
         (push-clip-rect ctx &child-rect)
-        
+
         ;; Draw background rect (radius 4.0f)
-        (Array.push-back! (Context.draw-commands ctx) (GuiDrawCommand.Rect @&child-rect bg-color 4.0f (get-active-clip-rect ctx)))
-        )))
+        (Array.push-back! (Context.draw-commands ctx)
+                          (GuiDrawCommand.Rect @&child-rect
+                                               bg-color
+                                               4f
+                                               (get-active-clip-rect ctx))))))
 
   (defn end-child-panel [ctx]
     (match @(Context.active-panel ctx)
@@ -746,32 +905,32 @@
               cy @(GuiRect.y &bounds)
               cw @(GuiRect.w &bounds)
               ch @(GuiRect.h &bounds)
-              
               ;; The content height is the current layout Y cursor
               content-h @(PanelState.layout-y &child-state)
               scroll-y @(PanelState.scroll-y &child-state)
               child-id @(PanelState.id &child-state)
-              
               updated-scroll (Maybe.Nothing)
-              scrollbar-w 8.0f]
+              scrollbar-w 8f]
           (do
             ;; Check if scrollbar is needed
             (when (> content-h ch)
               (let [;; Scrollbar track bounds
-                    track-rect (GuiRect.init (- (+ cx cw) scrollbar-w) cy scrollbar-w ch)
-                    
+                    track-rect (GuiRect.init (- (+ cx cw) scrollbar-w)
+                                             cy
+                                             scrollbar-w
+                                             ch)
                     ;; Calculate scrollbar knob height and position
-                    knob-h (max 15.0f (* (/ ch content-h) ch))
+                    knob-h (max 15f (* (/ ch content-h) ch))
                     max-scroll-y (- content-h ch)
                     scroll-ratio (/ scroll-y max-scroll-y)
-                    
                     knob-y (+ cy (* scroll-ratio (- ch knob-h)))
-                    knob-rect (GuiRect.init (- (+ cx cw) scrollbar-w) knob-y scrollbar-w knob-h)
-                    
+                    knob-rect (GuiRect.init (- (+ cx cw) scrollbar-w)
+                                            knob-y
+                                            scrollbar-w
+                                            knob-h)
                     ;; Check mouse interaction
                     mx @(Context.mouse-x ctx)
                     my @(Context.mouse-y ctx)
-                    
                     track-hovered (GuiRect.contains? &track-rect mx my)
                     scrollbar-id (str* child-id @"_scroll")
                     act-id @(Context.active-id ctx)
@@ -782,33 +941,43 @@
                     (do
                       (Context.set-active-id! ctx @&scrollbar-id)
                       (set! is-active true)))
-                    
+
                   ;; Dragging logic
                   (if (and is-active @(Context.mouse-down ctx))
                     (let [;; Calculate new scroll ratio based on mouse Y position relative to track
-                          click-y-ratio (/ (- (- my cy) (* knob-h 0.5f)) (- ch knob-h))
-                          clamped-ratio (Double.clamp 0.0 1.0 (Double.from-float click-y-ratio))
-                          new-scroll (* (Double.to-float clamped-ratio) max-scroll-y)]
+                          click-y-ratio (/ (- (- my cy) (* knob-h 0.5f))
+                                           (- ch knob-h))
+                          clamped-ratio (Double.clamp 0.0
+                                                      1.0
+                                                      (Double.from-float click-y-ratio))
+                          new-scroll (* (Double.to-float clamped-ratio)
+                                        max-scroll-y)]
                       (set! updated-scroll (Maybe.Just new-scroll)))
-                    (when is-active
-                      (Context.set-active-id! ctx @"")))
-                      
+                    (when is-active (Context.set-active-id! ctx @"")))
+
                   ;; Render scrollbar track
                   (let [track-color @(Theme.scroll-track (Context.theme ctx))]
-                    (Array.push-back! (Context.draw-commands ctx) (GuiDrawCommand.Rect track-rect track-color 2.0f (get-active-clip-rect ctx))))
-                    
+                    (Array.push-back! (Context.draw-commands ctx)
+                                      (GuiDrawCommand.Rect track-rect
+                                                           track-color
+                                                           2f
+                                                           (get-active-clip-rect ctx))))
+
                   ;; Render scrollbar knob
                   (let [knob-color (if is-active
-                                     @(Theme.scroll-knob-active (Context.theme ctx))
-                                     (if track-hovered
-                                       @(Theme.scroll-knob-hover (Context.theme ctx))
-                                       @(Theme.scroll-knob (Context.theme ctx))))]
-                    (Array.push-back! (Context.draw-commands ctx) (GuiDrawCommand.Rect knob-rect knob-color 2.0f (get-active-clip-rect ctx))))
-                  )))
-                  
+                          @(Theme.scroll-knob-active (Context.theme ctx))
+                          (if track-hovered
+                            @(Theme.scroll-knob-hover (Context.theme ctx))
+                            @(Theme.scroll-knob (Context.theme ctx))))]
+                    (Array.push-back! (Context.draw-commands ctx)
+                                      (GuiDrawCommand.Rect knob-rect
+                                                           knob-color
+                                                           2f
+                                                           (get-active-clip-rect ctx)))))))
+
             ;; Pop clip rect
             (pop-clip-rect ctx)
-            
+
             ;; Pop active-panel from stack
             (let [stack @(Context.panel-stack ctx)
                   num (Array.length &stack)]
@@ -819,49 +988,62 @@
                   (do
                     (Context.set-active-panel! ctx (Maybe.Just prev-state))
                     (Context.set-panel-stack! ctx new-stack)))))
-                    
+
             updated-scroll))))
 
   (defn separator [ctx]
-    (let [rect (get-next-widget-rect! ctx 10.0f)
+    (let [rect (get-next-widget-rect! ctx 10f)
           x @(GuiRect.x &rect)
           y @(GuiRect.y &rect)
           w @(GuiRect.w &rect)
           h @(GuiRect.h &rect)
-          line-rect (GuiRect.init x (+ y 4.0f) w 2.0f)
+          line-rect (GuiRect.init x (+ y 4f) w 2f)
           line-color @(Theme.separator (Context.theme ctx))]
-      (Array.push-back! (Context.draw-commands ctx) (GuiDrawCommand.Rect line-rect line-color 0.0f (get-active-clip-rect ctx)))))
+      (Array.push-back! (Context.draw-commands ctx)
+                        (GuiDrawCommand.Rect line-rect
+                                             line-color
+                                             0f
+                                             (get-active-clip-rect ctx)))))
 
   (defn tooltip [ctx text]
     (when @(Context.last-widget-hovered ctx)
       (let [mx @(Context.mouse-x ctx)
             my @(Context.mouse-y ctx)
-            
-            font-sz 12.0f
+            font-sz 12f
             tw (text-width text font-sz)
             th font-sz
-            pad 4.0f
-            
-            tx (+ mx 12.0f)
-            ty (+ my 12.0f)
-            
-            bg-rect (GuiRect.init tx ty (+ tw (* pad 2.0f)) (+ th (* pad 2.0f)))
+            pad 4f
+            tx (+ mx 12f)
+            ty (+ my 12f)
+            bg-rect (GuiRect.init tx ty (+ tw (* pad 2f)) (+ th (* pad 2f)))
             bg-color @(Theme.tooltip-bg (Context.theme ctx))
             text-color @(Theme.tooltip-text (Context.theme ctx))
             text-rect (GuiRect.init (+ tx pad) (+ ty pad) tw th)]
         (do
-          (Array.push-back! (Context.draw-commands ctx) (GuiDrawCommand.Rect bg-rect bg-color 2.0f (GuiRect.init 0.0f 0.0f 99999.0f 99999.0f)))
-          (Array.push-back! (Context.draw-commands ctx) (GuiDrawCommand.Text text-rect text-color @text (GuiRect.init 0.0f 0.0f 99999.0f 99999.0f)))))))
+          (Array.push-back! (Context.draw-commands ctx)
+                            (GuiDrawCommand.Rect bg-rect
+                                                 bg-color
+                                                 2f
+                                                 (GuiRect.init 0f
+                                                               0f
+                                                               99999f
+                                                               99999f)))
+          (Array.push-back! (Context.draw-commands ctx)
+                            (GuiDrawCommand.Text text-rect
+                                                 text-color
+                                                 @text
+                                                 (GuiRect.init 0f
+                                                               0f
+                                                               99999f
+                                                               99999f)))))))
 
   (defn combo [ctx id items current-selection]
-    (let [rect (get-next-widget-rect! ctx 22.0f)
+    (let [rect (get-next-widget-rect! ctx 22f)
           hashed-id (get-hashed-id ctx id)
-          
           x @(GuiRect.x &rect)
           y @(GuiRect.y &rect)
           w @(GuiRect.w &rect)
           h @(GuiRect.h &rect)
-          
           num (Array.length items)
           result (Maybe.Nothing)]
       (if (= num 0)
@@ -870,75 +1052,87 @@
               is-open (= &act-combo-id id)
               hovered (widget-hovered? ctx &rect)
               clicked (and hovered @(Context.mouse-clicked ctx))
-              
               ;; Styling the header selector bar
               bg-color (if hovered
-                         (if @(Context.mouse-down ctx)
-                           @(Theme.button-active (Context.theme ctx))
-                           @(Theme.button-hover (Context.theme ctx)))
-                         @(Theme.button-bg (Context.theme ctx)))
+                (if @(Context.mouse-down ctx)
+                  @(Theme.button-active (Context.theme ctx))
+                  @(Theme.button-hover (Context.theme ctx)))
+                @(Theme.button-bg (Context.theme ctx)))
               text-color @(Theme.button-text (Context.theme ctx))
-              
               ;; Fetch current selected label
-              selected-label (if (and (>= current-selection 0) (< current-selection num))
-                               @(Array.unsafe-nth items current-selection)
-                               @"")
-                               
+              selected-label (if (and (>= current-selection 0)
+                                      (< current-selection num))
+                @(Array.unsafe-nth items current-selection)
+                @"")
               ;; Prepend visual indicator representing expansion status
               arrow (if is-open @"v " @"> ")
               full-title (str* arrow selected-label)]
           (do
             (Context.set-last-widget-hovered! ctx hovered)
-            (when hovered
-              (Context.set-hot-id! ctx @id))
-              
+            (when hovered (Context.set-hot-id! ctx @id))
+
             ;; Click header: toggle open/close
             (when clicked
               (if is-open
                 (Context.set-active-combo-id! ctx @"")
                 (Context.set-active-combo-id! ctx @id)))
-                
+
             ;; Render header background
-            (Array.push-back! (Context.draw-commands ctx) (GuiDrawCommand.Rect @&rect bg-color 4.0f (get-active-clip-rect ctx)))
+            (Array.push-back! (Context.draw-commands ctx)
+                              (GuiDrawCommand.Rect @&rect
+                                                   bg-color
+                                                   4f
+                                                   (get-active-clip-rect ctx)))
             ;; Render header text
-            (let [text-rect (GuiRect.init (+ x 6.0f) (+ y 4.0f) (- w 12.0f) 14.0f)]
-              (Array.push-back! (Context.draw-commands ctx) (GuiDrawCommand.Text text-rect text-color full-title (get-active-clip-rect ctx))))
-              
+            (let [text-rect (GuiRect.init (+ x 6f) (+ y 4f) (- w 12f) 14f)]
+              (Array.push-back! (Context.draw-commands ctx)
+                                (GuiDrawCommand.Text text-rect
+                                                     text-color
+                                                     full-title
+                                                     (get-active-clip-rect ctx))))
+
             ;; If open, draw options as vertical list
             (when is-open
               (for [i 0 num]
-                (let [opt-rect (get-next-widget-rect! ctx 20.0f)
+                (let [opt-rect (get-next-widget-rect! ctx 20f)
                       opt-x @(GuiRect.x &opt-rect)
                       opt-y @(GuiRect.y &opt-rect)
                       opt-w @(GuiRect.w &opt-rect)
                       opt-h @(GuiRect.h &opt-rect)
-                      
                       opt-hovered (widget-hovered? ctx &opt-rect)
                       opt-clicked (and opt-hovered @(Context.mouse-clicked ctx))
                       opt-selected (= current-selection i)
-                      
                       ;; Style options (use tab colors)
                       opt-bg (if opt-selected
-                               @(Theme.tab-selected (Context.theme ctx))
-                               (if opt-hovered
-                                 @(Theme.tab-hover (Context.theme ctx))
-                                 @(Theme.tab-bg (Context.theme ctx))))
+                        @(Theme.tab-selected (Context.theme ctx))
+                        (if opt-hovered
+                          @(Theme.tab-hover (Context.theme ctx))
+                          @(Theme.tab-bg (Context.theme ctx))))
                       opt-text-color (if opt-selected
-                                       @(Theme.tab-text-selected (Context.theme ctx))
-                                       @(Theme.tab-text (Context.theme ctx)))
+                        @(Theme.tab-text-selected (Context.theme ctx))
+                        @(Theme.tab-text (Context.theme ctx)))
                       label (Array.unsafe-nth items i)]
                   (do
-                    (when opt-hovered
-                      (Context.set-hot-id! ctx @id))
+                    (when opt-hovered (Context.set-hot-id! ctx @id))
                     (when opt-clicked
                       (do
                         (Context.set-active-combo-id! ctx @"")
                         (set! result (Maybe.Just i))))
-                        
+
                     ;; Draw option rect (radius 2.0)
-                    (Array.push-back! (Context.draw-commands ctx) (GuiDrawCommand.Rect opt-rect opt-bg 2.0f (get-active-clip-rect ctx)))
+                    (Array.push-back! (Context.draw-commands ctx)
+                                      (GuiDrawCommand.Rect opt-rect
+                                                           opt-bg
+                                                           2f
+                                                           (get-active-clip-rect ctx)))
                     ;; Draw option text (inset slightly for child indentation look)
-                    (let [opt-text-rect (GuiRect.init (+ opt-x 12.0f) (+ opt-y 4.0f) (- opt-w 24.0f) 12.0f)]
-                      (Array.push-back! (Context.draw-commands ctx) (GuiDrawCommand.Text opt-text-rect opt-text-color @label (get-active-clip-rect ctx))))))))
-            result)))))
-)
+                    (let [opt-text-rect (GuiRect.init (+ opt-x 12f)
+                                                      (+ opt-y 4f)
+                                                      (- opt-w 24f)
+                                                      12f)]
+                      (Array.push-back! (Context.draw-commands ctx)
+                                        (GuiDrawCommand.Text opt-text-rect
+                                                             opt-text-color
+                                                             @label
+                                                             (get-active-clip-rect ctx))))))))
+            result))))))

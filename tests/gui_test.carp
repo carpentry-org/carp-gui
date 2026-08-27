@@ -8,129 +8,233 @@
         ctx (Gui.Context.create)]
     (do
       ;; Test 1: Bounding Box contains?
-      (let [rect (GuiRect.init 10.0f 20.0f 100.0f 50.0f)]
+      (let [rect (GuiRect.init 10f 20f 100f 50f)]
         (do
-          (set! state (assert-true &state (GuiRect.contains? &rect 15.0f 30.0f) "GuiRect contains (15, 30)"))
-          (set! state (assert-true &state (GuiRect.contains? &rect 10.0f 20.0f) "GuiRect contains top-left edge"))
-          (set! state (assert-true &state (GuiRect.contains? &rect 110.0f 70.0f) "GuiRect contains bottom-right edge"))
-          (set! state (assert-false &state (GuiRect.contains? &rect 5.0f 30.0f) "GuiRect does not contain (5, 30)"))
-          (set! state (assert-false &state (GuiRect.contains? &rect 50.0f 10.0f) "GuiRect does not contain (50, 10)"))))
+          (set! state
+                (assert-true &state
+                  (GuiRect.contains? &rect 15f 30f)
+                  "GuiRect contains (15, 30)"))
+          (set! state
+                (assert-true &state
+                  (GuiRect.contains? &rect 10f 20f)
+                  "GuiRect contains top-left edge"))
+          (set! state
+                (assert-true &state
+                  (GuiRect.contains? &rect 110f 70f)
+                  "GuiRect contains bottom-right edge"))
+          (set! state
+                (assert-false &state
+                  (GuiRect.contains? &rect 5f 30f)
+                  "GuiRect does not contain (5, 30)"))
+          (set! state
+                (assert-false &state
+                  (GuiRect.contains? &rect 50f 10f)
+                  "GuiRect does not contain (50, 10)"))))
 
       ;; Test 2: Context lifecycle begin
       (do
         (Gui.begin &ctx 50.0 60.0 true false)
-        (set! state (assert-true &state (Float.approx @(Context.mouse-x &ctx) 50.0f) "Context mouse-x updated"))
-        (set! state (assert-true &state (Float.approx @(Context.mouse-y &ctx) 60.0f) "Context mouse-y updated"))
-        (set! state (assert-true &state @(Context.mouse-down &ctx) "Context mouse-down updated"))
-        (set! state (assert-false &state @(Context.mouse-clicked &ctx) "Context mouse-clicked updated"))
-        (set! state (assert-true &state (Array.empty? (Context.draw-commands &ctx)) "Draw commands cleared on begin")))
+        (set! state
+              (assert-true &state
+                (Float.approx @(Context.mouse-x &ctx) 50f)
+                "Context mouse-x updated"))
+        (set! state
+              (assert-true &state
+                (Float.approx @(Context.mouse-y &ctx) 60f)
+                "Context mouse-y updated"))
+        (set! state
+              (assert-true &state
+                @(Context.mouse-down &ctx)
+                "Context mouse-down updated"))
+        (set! state
+              (assert-false &state
+                @(Context.mouse-clicked &ctx)
+                "Context mouse-clicked updated"))
+        (set! state
+              (assert-true &state
+                (Array.empty? (Context.draw-commands &ctx))
+                "Draw commands cleared on begin")))
 
       ;; Test 3: Panel layout calculations
       (do
-        (Gui.begin-panel &ctx @"my_panel" 10.0f 10.0f 200.0f 200.0f @"Title")
+        (Gui.begin-panel &ctx @"my_panel" 10f 10f 200f 200f @"Title")
         ;; PanelState should be active
         (match @(Context.active-panel &ctx)
           (Maybe.Just pstate)
             (do
-              (set! state (assert-true &state (Float.approx @(GuiRect.w (PanelState.bounds &pstate)) 200.0f) "Active panel bounds width match"))
-              (set! state (assert-true &state (Float.approx @(PanelState.layout-y &pstate) 32.0f) "Initial panel layout Y starts after header")))
+              (set! state
+                    (assert-true &state
+                      (Float.approx @(GuiRect.w (PanelState.bounds &pstate))
+                                    200f)
+                      "Active panel bounds width match"))
+              (set! state
+                    (assert-true &state
+                      (Float.approx @(PanelState.layout-y &pstate) 32f)
+                      "Initial panel layout Y starts after header")))
           (Maybe.Nothing)
             (set! state (assert-true &state false "Active panel state found")))
         (Gui.end-panel &ctx)
-        (set! state (assert-true &state (Maybe.nothing? (Context.active-panel &ctx)) "Active panel cleared on end-panel")))
+        (set! state
+              (assert-true &state
+                (Maybe.nothing? (Context.active-panel &ctx))
+                "Active panel cleared on end-panel")))
 
       ;; Test 4: Layout auto-increment widget rectangles
       (do
         (Gui.begin &ctx 0.0 0.0 false false)
-        (Gui.begin-panel &ctx @"layout_test" 10.0f 20.0f 100.0f 100.0f @"Test")
-        (let [r1 (Gui.get-next-widget-rect! &ctx 15.0f)
-              r2 (Gui.get-next-widget-rect! &ctx 25.0f)]
+        (Gui.begin-panel &ctx @"layout_test" 10f 20f 100f 100f @"Test")
+        (let [r1 (Gui.get-next-widget-rect! &ctx 15f)
+              r2 (Gui.get-next-widget-rect! &ctx 25f)]
           (do
-            (set! state (assert-true &state (Float.approx @(GuiRect.x &r1) 18.0f) "First widget X has padding"))
-            (set! state (assert-true &state (Float.approx @(GuiRect.y &r1) 52.0f) "First widget Y matches layout Y"))
-            (set! state (assert-true &state (Float.approx @(GuiRect.x &r2) 18.0f) "Second widget X matches"))
-            (set! state (assert-true &state (Float.approx @(GuiRect.y &r2) 75.0f) "Second widget Y incremented by height + padding (52 + 15 + 8)"))))
+            (set! state
+                  (assert-true &state
+                    (Float.approx @(GuiRect.x &r1) 18f)
+                    "First widget X has padding"))
+            (set! state
+                  (assert-true &state
+                    (Float.approx @(GuiRect.y &r1) 52f)
+                    "First widget Y matches layout Y"))
+            (set! state
+                  (assert-true &state
+                    (Float.approx @(GuiRect.x &r2) 18f)
+                    "Second widget X matches"))
+            (set! state
+                  (assert-true &state
+                    (Float.approx @(GuiRect.y &r2) 75f)
+                    "Second widget Y incremented by height + padding (52 + 15 + 8)"))))
         (Gui.end-panel &ctx))
 
       ;; Test 5: Verify draw commands list and vertex generation
       (do
         (Gui.begin &ctx 0.0 0.0 false false)
-        (Gui.begin-panel &ctx @"draw_test" 0.0f 0.0f 100.0f 100.0f @"Panel")
+        (Gui.begin-panel &ctx @"draw_test" 0f 0f 100f 100f @"Panel")
         (Gui.label &ctx @"Label Text")
         (Gui.end-panel &ctx)
         ;; Draw commands should have: Background Rect, Header Rect, Title Text, Label Text
         (let [cmds (Context.draw-commands &ctx)]
           (do
-            (set! state (assert-true &state (= (Array.length cmds) 4) "Draw command list has 4 elements"))
+            (set! state
+                  (assert-true &state
+                    (= (Array.length cmds) 4)
+                    "Draw command list has 4 elements"))
             (let [verts (Gui.generate-vertices &ctx)
                   flat-verts (Gui.generate-vertices-flat &ctx)]
               (do
-                (set! state (assert-true &state (= (Array.length &verts) 96) "Generated 96 vertices (2 quads + 14 visible characters * 6 vertices per character/quad)"))
-                (set! state (assert-true &state (= (Array.length &flat-verts) 1152) "Generated 1152 flat floats (96 vertices * 12 floats per vertex)")))))))
+                (set! state
+                      (assert-true &state
+                        (= (Array.length &verts) 96)
+                        "Generated 96 vertices (2 quads + 14 visible characters * 6 vertices per character/quad)"))
+                (set! state
+                      (assert-true &state
+                        (= (Array.length &flat-verts) 1152)
+                        "Generated 1152 flat floats (96 vertices * 12 floats per vertex)")))))))
 
       ;; Test 6: Tabs widget functionality
       (do
-        (Gui.begin &ctx 50.0 50.0 true true) ;; Mouse at x=50, y=50, clicked
-        (Gui.begin-panel &ctx @"tabs_panel" 10.0f 10.0f 200.0f 100.0f @"Panel")
+        (Gui.begin &ctx 50.0 50.0 true true)
+        ;; Mouse at x=50, y=50, clicked
+        (Gui.begin-panel &ctx @"tabs_panel" 10f 10f 200f 100f @"Panel")
         (let [labels [@"Tab A" @"Tab B"]
               selected 1
               res (Gui.tabs &ctx &@"my_tab_bar" &labels selected)]
           (do
             (match res
-              (Maybe.Just val) (set! state (assert-true &state (= val 0) "Correct tab index 0 clicked"))
-              (Maybe.Nothing) (set! state (assert-true &state false "Tabs did not return Just index")))
+              (Maybe.Just val)
+                (set! state
+                      (assert-true &state
+                        (= val 0)
+                        "Correct tab index 0 clicked"))
+              (Maybe.Nothing)
+                (set! state
+                      (assert-true &state false "Tabs did not return Just index")))
             (let [cmds (Context.draw-commands &ctx)]
-              (set! state (assert-true &state (= (Array.length cmds) 7) "Draw command list has 7 elements for tabs")))))
+              (set! state
+                    (assert-true &state
+                      (= (Array.length cmds) 7)
+                      "Draw command list has 7 elements for tabs")))))
         (Gui.end-panel &ctx))
 
       ;; Test 7: Collapsing header widget functionality
       (do
-        (Gui.begin &ctx 50.0 50.0 true true) ;; Mouse at x=50, y=50, clicked
-        (Gui.begin-panel &ctx @"header_panel" 10.0f 10.0f 200.0f 100.0f @"Panel")
-        (let [new-open (Gui.collapsing-header &ctx &@"my_hdr" @"Header Title" false)]
+        (Gui.begin &ctx 50.0 50.0 true true)
+        ;; Mouse at x=50, y=50, clicked
+        (Gui.begin-panel &ctx @"header_panel" 10f 10f 200f 100f @"Panel")
+        (let [new-open (Gui.collapsing-header &ctx
+                                              &@"my_hdr"
+                                              @"Header Title"
+                                              false)]
           (do
-            (set! state (assert-true &state new-open "Collapsing header toggled to true when clicked"))
+            (set! state
+                  (assert-true &state
+                    new-open
+                    "Collapsing header toggled to true when clicked"))
             (let [cmds (Context.draw-commands &ctx)]
-              (set! state (assert-true &state (= (Array.length cmds) 5) "Draw command list has 5 elements for collapsing header")))))
+              (set! state
+                    (assert-true &state
+                      (= (Array.length cmds) 5)
+                      "Draw command list has 5 elements for collapsing header")))))
         (Gui.end-panel &ctx))
 
       ;; Test 8: Nested child panels functionality
       (do
         (Gui.begin &ctx 0.0 0.0 false false)
-        (Gui.begin-panel &ctx @"parent_panel" 10.0f 10.0f 200.0f 200.0f @"Parent")
-        
+        (Gui.begin-panel &ctx @"parent_panel" 10f 10f 200f 200f @"Parent")
+
         ;; Draw a child panel
-        (Gui.begin-child-panel &ctx &@"child_1" 150.0f 100.0f 0.0f)
+        (Gui.begin-child-panel &ctx &@"child_1" 150f 100f 0f)
         ;; Active panel bounds should be child_1
         (match @(Context.active-panel &ctx)
           (Maybe.Just cstate)
-            (set! state (assert-true &state (Float.approx @(GuiRect.w (PanelState.bounds &cstate)) 150.0f) "Active child panel bounds width match"))
+            (set! state
+                  (assert-true &state
+                    (Float.approx @(GuiRect.w (PanelState.bounds &cstate)) 150f)
+                    "Active child panel bounds width match"))
           (Maybe.Nothing)
-            (set! state (assert-true &state false "Active child panel state found")))
-            
+            (set! state
+                  (assert-true &state false "Active child panel state found")))
+
         ;; Nest another child panel inside it!
-        (Gui.begin-child-panel &ctx &@"child_2" 100.0f 50.0f 0.0f)
+        (Gui.begin-child-panel &ctx &@"child_2" 100f 50f 0f)
         (match @(Context.active-panel &ctx)
           (Maybe.Just cstate2)
-            (set! state (assert-true &state (Float.approx @(GuiRect.w (PanelState.bounds &cstate2)) 100.0f) "Active nested child panel bounds width match"))
+            (set! state
+                  (assert-true &state
+                    (Float.approx @(GuiRect.w (PanelState.bounds &cstate2)) 100f)
+                    "Active nested child panel bounds width match"))
           (Maybe.Nothing)
-            (set! state (assert-true &state false "Active nested child panel state found")))
-            
+            (set! state
+                  (assert-true &state
+                    false
+                    "Active nested child panel state found")))
+
         ;; End nested panel
         (let [res2 (Gui.end-child-panel &ctx)]
           (do
-            (set! state (assert-true &state (Maybe.nothing? &res2) "End nested child returned Nothing scroll"))
+            (set! state
+                  (assert-true &state
+                    (Maybe.nothing? &res2)
+                    "End nested child returned Nothing scroll"))
             ;; Active panel should revert back to child_1
             (match @(Context.active-panel &ctx)
               (Maybe.Just cstate)
-                (set! state (assert-true &state (Float.approx @(GuiRect.w (PanelState.bounds &cstate)) 150.0f) "Active panel reverted to first child"))
+                (set! state
+                      (assert-true &state
+                        (Float.approx @(GuiRect.w (PanelState.bounds &cstate))
+                                      150f)
+                        "Active panel reverted to first child"))
               (Maybe.Nothing)
-                (set! state (assert-true &state false "Active panel found after end-child-panel")))))
-                
+                (set! state
+                      (assert-true &state
+                        false
+                        "Active panel found after end-child-panel")))))
+
         ;; End first child panel
         (let [res1 (Gui.end-child-panel &ctx)]
-          (set! state (assert-true &state (Maybe.nothing? &res1) "End first child returned Nothing scroll")))
-          
+          (set! state
+                (assert-true &state
+                  (Maybe.nothing? &res1)
+                  "End first child returned Nothing scroll")))
+
         (Gui.end-panel &ctx))
 
       ;; Test 9: Child panel scrolling and dragging interaction
@@ -140,99 +244,150 @@
         ;; Scrollbar-w = 8.0f. So track-rect is:
         ;; x = 18 + 150 - 8 = 160. y = 42. w = 8. h = 50.
         ;; Let's place mouse at x=164.0f, y=45.0f, which is inside the track/knob.
-        (Gui.begin &ctx 164.0 45.0 true true) ;; Clicked at (164, 45)
-        (Gui.begin-panel &ctx @"parent" 10.0f 10.0f 200.0f 200.0f @"Parent")
-        
+        (Gui.begin &ctx 164.0 45.0 true true)
+        ;; Clicked at (164, 45)
+        (Gui.begin-panel &ctx @"parent" 10f 10f 200f 200f @"Parent")
+
         ;; Begin child panel with height = 50.0f, current scroll-y = 10.0f
-        (Gui.begin-child-panel &ctx &@"scroll_child" 150.0f 50.0f 10.0f)
-        
+        (Gui.begin-child-panel &ctx &@"scroll_child" 150f 50f 10f)
+
         ;; Draw some widgets to exceed height of 50.0f
-        (let [r1 (Gui.get-next-widget-rect! &ctx 40.0f)
-              r2 (Gui.get-next-widget-rect! &ctx 40.0f)]
+        (let [r1 (Gui.get-next-widget-rect! &ctx 40f)
+              r2 (Gui.get-next-widget-rect! &ctx 40f)]
           (do
             ;; Check that scroll offset was applied to Y position of r1
-            (set! state (assert-true &state (Float.approx @(GuiRect.y &r1) 38.0f) "Scroll offset subtracted from widget Y"))))
-            
+            (set! state
+                  (assert-true &state
+                    (Float.approx @(GuiRect.y &r1) 38f)
+                    "Scroll offset subtracted from widget Y"))))
+
         ;; End child panel and check scrollbar interaction
         (let [res (Gui.end-child-panel &ctx)]
           (do
             (match res
               (Maybe.Just new-scroll)
-                (set! state (assert-true &state (Float.approx new-scroll 0.0f) "Scrollbar drag updated scroll-y to 0.0"))
+                (set! state
+                      (assert-true &state
+                        (Float.approx new-scroll 0f)
+                        "Scrollbar drag updated scroll-y to 0.0"))
               (Maybe.Nothing)
-                (set! state (assert-true &state false "Scrollbar drag did not return Just scroll-y")))))
-                
+                (set! state
+                      (assert-true &state
+                        false
+                        "Scrollbar drag did not return Just scroll-y")))))
+
         (Gui.end-panel &ctx))
 
       ;; Test 10: Separator widget functionality
       (do
         (Gui.begin &ctx 0.0 0.0 false false)
-        (Gui.begin-panel &ctx @"sep_panel" 10.0f 10.0f 200.0f 100.0f @"Panel")
+        (Gui.begin-panel &ctx @"sep_panel" 10f 10f 200f 100f @"Panel")
         (Gui.separator &ctx)
         (let [cmds (Context.draw-commands &ctx)]
-          (set! state (assert-true &state (= (Array.length cmds) 4) "Draw command list has 4 elements with separator")))
+          (set! state
+                (assert-true &state
+                  (= (Array.length cmds) 4)
+                  "Draw command list has 4 elements with separator")))
         (Gui.end-panel &ctx))
 
       ;; Test 11: Theme customization functionality
       (do
         (let [custom-theme (Theme.create-default)
-              red-color (Color4.init 1.0f 0.0f 0.0f 1.0f)]
+              red-color (Color4.init 1f 0f 0f 1f)]
           (do
             (Theme.set-separator! &custom-theme red-color)
             (Context.set-theme! &ctx custom-theme)
             (Gui.begin &ctx 0.0 0.0 false false)
-            (Gui.begin-panel &ctx @"theme_panel" 10.0f 10.0f 200.0f 100.0f @"Panel")
+            (Gui.begin-panel &ctx @"theme_panel" 10f 10f 200f 100f @"Panel")
             (Gui.separator &ctx)
             (let [cmds (Context.draw-commands &ctx)
                   cmd (Array.unsafe-nth cmds 3)]
               (match-ref cmd
                 (GuiDrawCommand.Rect rect color radius c-rect)
                   (do
-                    (set! state (assert-true &state (Float.approx @(Color4.r color) 1.0f) "Custom theme separator R color is 1.0"))
-                    (set! state (assert-true &state (Float.approx @(Color4.g color) 0.0f) "Custom theme separator G color is 0.0")))
+                    (set! state
+                          (assert-true &state
+                            (Float.approx @(Color4.r color) 1f)
+                            "Custom theme separator R color is 1.0"))
+                    (set! state
+                          (assert-true &state
+                            (Float.approx @(Color4.g color) 0f)
+                            "Custom theme separator G color is 0.0")))
                 _
-                  (set! state (assert-true &state false "Separator command was not a Rect"))))
+                  (set! state
+                        (assert-true &state
+                          false
+                          "Separator command was not a Rect"))))
             (Gui.end-panel &ctx))))
 
       ;; Test 12: Tooltip widget functionality
       (do
         (Gui.begin &ctx 50.0 50.0 true true)
-        (Gui.begin-panel &ctx @"tooltip_panel" 10.0f 10.0f 200.0f 100.0f @"Panel")
+        (Gui.begin-panel &ctx @"tooltip_panel" 10f 10f 200f 100f @"Panel")
         (let [clicked (Gui.button &ctx &@"my_btn" @"Click Me")]
           (do
-            (set! state (assert-true &state @(Context.last-widget-hovered &ctx) "Button hover state is true"))
+            (set! state
+                  (assert-true &state
+                    @(Context.last-widget-hovered &ctx)
+                    "Button hover state is true"))
             (Gui.tooltip &ctx "My Button Tooltip")
             (let [cmds (Context.draw-commands &ctx)]
-              (set! state (assert-true &state (= (Array.length cmds) 7) "Draw command list has 7 elements with tooltip")))))
+              (set! state
+                    (assert-true &state
+                      (= (Array.length cmds) 7)
+                      "Draw command list has 7 elements with tooltip")))))
         (Gui.end-panel &ctx))
 
       ;; Test 13: Combo / Dropdown widget functionality
       (do
         ;; Frame 1: Combo is closed, click header to open it
         (Gui.begin &ctx 50.0 50.0 true true)
-        (Gui.begin-panel &ctx @"combo_panel" 10.0f 10.0f 200.0f 200.0f @"Panel")
+        (Gui.begin-panel &ctx @"combo_panel" 10f 10f 200f 200f @"Panel")
         (let [items [@"Opt A" @"Opt B"]
               res (Gui.combo &ctx &@"my_combo" &items 0)]
           (do
-            (set! state (assert-true &state (Maybe.nothing? &res) "Combo click returns Nothing on first click frame"))
-            (set! state (assert-true &state (= @(Context.active-combo-id &ctx) @"my_combo") "Combo active-combo-id set to my_combo"))
+            (set! state
+                  (assert-true &state
+                    (Maybe.nothing? &res)
+                    "Combo click returns Nothing on first click frame"))
+            (set! state
+                  (assert-true &state
+                    (= @(Context.active-combo-id &ctx) @"my_combo")
+                    "Combo active-combo-id set to my_combo"))
             (let [cmds (Context.draw-commands &ctx)]
-              (set! state (assert-true &state (= (Array.length cmds) 5) "Draw command list has 5 elements when closed")))))
+              (set! state
+                    (assert-true &state
+                      (= (Array.length cmds) 5)
+                      "Draw command list has 5 elements when closed")))))
         (Gui.end-panel &ctx)
 
         ;; Frame 2: Combo is open, click second option (Opt B) at y=110
         (Gui.begin &ctx 50.0 110.0 true true)
         (Context.set-active-combo-id! &ctx @"my_combo")
-        (Gui.begin-panel &ctx @"combo_panel" 10.0f 10.0f 200.0f 200.0f @"Panel")
+        (Gui.begin-panel &ctx @"combo_panel" 10f 10f 200f 200f @"Panel")
         (let [items [@"Opt A" @"Opt B"]
               res (Gui.combo &ctx &@"my_combo" &items 0)]
           (do
             (match res
-              (Maybe.Just idx) (set! state (assert-true &state (= idx 1) "Combo selected index is 1 (Opt B)"))
-              (Maybe.Nothing) (set! state (assert-true &state false "Combo selection returned Nothing")))
-            (set! state (assert-true &state (= @(Context.active-combo-id &ctx) @"") "Combo closed (active-combo-id cleared)"))
+              (Maybe.Just idx)
+                (set! state
+                      (assert-true &state
+                        (= idx 1)
+                        "Combo selected index is 1 (Opt B)"))
+              (Maybe.Nothing)
+                (set! state
+                      (assert-true &state
+                        false
+                        "Combo selection returned Nothing")))
+            (set! state
+                  (assert-true &state
+                    (= @(Context.active-combo-id &ctx) @"")
+                    "Combo closed (active-combo-id cleared)"))
             (let [cmds (Context.draw-commands &ctx)]
-              (set! state (assert-true &state (= (Array.length cmds) 9) "Draw command list has 9 elements when open")))))
+              (set! state
+                    (assert-true &state
+                      (= (Array.length cmds) 9)
+                      "Draw command list has 9 elements when open")))))
         (Gui.end-panel &ctx))
 
       state)))
