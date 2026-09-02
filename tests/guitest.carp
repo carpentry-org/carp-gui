@@ -187,8 +187,7 @@
               win @(App.win &app)
               surf @(App.surf &app)
               ;; Load simple GUI shader
-              shader-res (IO.read-file
-                &@"/home/sqrew/Desktop/carp-gui/tests/guitest_shader.wgsl")
+              shader-res (IO.read-file &@"tests/guitest_shader.wgsl")
               shader-src (match shader-res (Result.Success s) s _ @"")
               format (WGPURender.surface-format surf)
               pipeline-res (WGPURender.create-geom-pipeline ctx

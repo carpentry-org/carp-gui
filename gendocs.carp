@@ -1,0 +1,37 @@
+(load "carp-gui.carp")
+
+(Project.config "title" "carp-gui")
+(Project.config "docs-directory" "./docs/")
+(Project.config "docs-logo" "")
+(Project.config "docs-url" "https://github.com/carpentry-org/carp-gui")
+(Project.config "docs-styling" "../style.css")
+(Project.config "docs-prelude" "An immediate-mode GUI for Carp that emits
+WebGPU vertex batches.
+
+```
+(load \"git@github.com:carpentry-org/carp-gui@master\")
+```
+
+- [`Gui`](./Gui.html) — the widgets and the layout that places them
+- [`Context`](./Context.html) — the UI state carried between frames, with
+  [`PanelState`](./PanelState.html)
+- [`GuiRect`](./GuiRect.html) — rectangles, and the
+  [`GuiDrawCommand`](./GuiDrawCommand.html)s they turn into
+- [`Theme`](./Theme.html), [`Color4`](./Color4.html) — colours
+- [`Vertex`](./Vertex.html) — one vertex of the emitted batch
+
+Widgets are declared inline in the frame loop; there is no retained tree. Each
+frame walks the declarations and batches every panel and widget into a single
+`(Array Vertex)`, which goes to the GPU as one buffer.
+
+`gui.wgsl` is the matching shader. Rounded corners are an SDF evaluated in the
+fragment shader rather than geometry, so they stay crisp at any scale.
+
+The library itself is carp and WGSL with nothing to link against. Driving it
+needs a WebGPU surface, which is what `tests/guitest.carp` demonstrates; that
+file is a manual demo and needs bindings that do not live in this org.")
+
+(save-docs Gui Context PanelState GuiRect GuiDrawCommand Theme Color4 Vertex)
+; Carp's save-docs hardcodes the index filename as <title>_index.html.
+; Rename to docs/index.html.
+(defn main [] (System.system "mv ./docs/carp-gui_index.html ./docs/index.html"))
